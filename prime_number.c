@@ -27,17 +27,17 @@ int main(int argc, int** argv)
     int  number_of_found= 0;
 
     while( 1 ) {
-		if( n > INT_MAX ) break;
+        if( n > INT_MAX ) break;
         if( divisibles(n) )  {
             number_of_found++;
-			fprintf(stdout, "%d-th integer %d found\n", number_of_found, n);
+            fprintf(stdout, "%d-th integer %d found\n", number_of_found, n);
             if( k == number_of_found ) {
                 // found kth interger
-				fprintf(stdout, "%d-th integer %d found\n", k, n);
-				break;
+                fprintf(stdout, "%d-th integer %d found\n", k, n);
+                break;
             }
         }
-		n += 1;
+        n += 1;
     }
-	return 0;
+    return 0;
 }

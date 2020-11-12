@@ -3,9 +3,9 @@
 #include <string.h>
 
 struct node {
-	int key;
-	struct node* left;
-	struct node* right; 
+    int key;
+    struct node* left;
+    struct node* right; 
 };
 typedef struct node node_t;
 
@@ -14,8 +14,8 @@ node_t* create_node(int key)
     node_t* node = (node_t*)malloc(sizeof(node_t));
     if( !node ) return NULL;
     node->key = key;
-	node->left = NULL;
-	node->right = NULL;
+    node->left = NULL;
+    node->right = NULL;
     return node;
 }
 
@@ -69,33 +69,33 @@ node_t* delete(node_t* root, int key)
     if( !root ) return NULL;
     // find key first
     if( root->key < key ) root->right = delete(root->right, key);
-	else if( root->key > key ) root->left = delete(root->left, key);
-	else {
-		// root->key == key
-		// 0. root has no child
-		if( !root->left && !root->right ) {
-			free(root);
-			return NULL;
-		}
-		// 1. root has left child only
-		if( root->left && !root->right ) {
-			temp = root->left;
-			free(root);
-			return temp;
-		}
-		// 2. root has right child only
-		if( !root->left && root->right ) {
-			temp = root->right;
-			free(root);
-			return temp;
-		} 
-		// 3. root has both child
-		temp = find_smallest(root->right);
-		// copy temp to root
-		root->key = temp->key;
-		// delete temp
-		root->right = delete(root->right, temp->key);
-	}
+    else if( root->key > key ) root->left = delete(root->left, key);
+    else {
+        // root->key == key
+        // 0. root has no child
+        if( !root->left && !root->right ) {
+            free(root);
+            return NULL;
+        }
+        // 1. root has left child only
+        if( root->left && !root->right ) {
+            temp = root->left;
+            free(root);
+            return temp;
+        }
+        // 2. root has right child only
+        if( !root->left && root->right ) {
+            temp = root->right;
+            free(root);
+            return temp;
+        } 
+        // 3. root has both child
+        temp = find_smallest(root->right);
+        // copy temp to root
+        root->key = temp->key;
+        // delete temp
+        root->right = delete(root->right, temp->key);
+    }
     return root;
 }
 
@@ -113,25 +113,25 @@ int main(int argc, char** argv)
     root = insert(root, 9);
     root = insert(root, 10);
     inorder(root);
-	fprintf(stdout, "\n");
-	node_t* node;
-	int		key;
-	
-	key = 9;
-	node = find(root, key);
-	if( node ) fprintf(stdout, "%d found\n", key);
-	key = 0;
-	node = find(root, key);
-	if( node ) fprintf(stdout, "%d found\n", key);
-	else fprintf(stdout, "%d not found\n", key);
+    fprintf(stdout, "\n");
+    node_t* node;
+    int        key;
+    
+    key = 9;
+    node = find(root, key);
+    if( node ) fprintf(stdout, "%d found\n", key);
+    key = 0;
+    node = find(root, key);
+    if( node ) fprintf(stdout, "%d found\n", key);
+    else fprintf(stdout, "%d not found\n", key);
 
-	root = delete(root, 9);
+    root = delete(root, 9);
     inorder(root);
-	fprintf(stdout, "\n");
-	root = delete(root, 1);
+    fprintf(stdout, "\n");
+    root = delete(root, 1);
     inorder(root);
-	fprintf(stdout, "\n");
-	
-	destroy(root);
+    fprintf(stdout, "\n");
+    
+    destroy(root);
     return 0;
 }

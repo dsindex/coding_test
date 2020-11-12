@@ -24,11 +24,11 @@ int dp_fib(int n)
 
 int main(int argc, char** argv)
 {
-	int n = 10;
+    int n = 10;
 
-	fprintf(stdout, "%d-th fibonacci number is %d\n", n, recursive_fib(n));
-	fprintf(stdout, "%d-th fibonacci number is %d\n", n, dp_fib(n));
+    fprintf(stdout, "%d-th fibonacci number is %d\n", n, recursive_fib(n));
+    fprintf(stdout, "%d-th fibonacci number is %d\n", n, dp_fib(n));
 
-	return 0;
+    return 0;
 }
 

@@ -13,6 +13,6 @@ void print_number(int begin, int end)
 
 int main(int argc, char** argv)
 {
-	print_number(1, 99);
-	return 0;
+    print_number(1, 99);
+    return 0;
 }

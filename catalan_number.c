@@ -7,11 +7,11 @@ int recursive_catalan(int n)
 {
     int i;
     int sum = 0;
-	if( n == 0 || n == 1 ) return 1;
+    if( n == 0 || n == 1 ) return 1;
     for( i = 0; i < n; i++ ) {
         sum += recursive_catalan(i) * recursive_catalan(n-i-1);
     }
-	return sum;
+    return sum;
 }
 
 // dynamic programming
@@ -34,13 +34,13 @@ int dynamic_catalan(int n)
 
 int main(int argc, char** argv)
 {
-	int n = 4;
-	int catalan;
-	
-	catalan = recursive_catalan(n);
-	fprintf(stdout, "catalan(%d) = %d\n", n, catalan);
-	catalan = dynamic_catalan(n);
-	fprintf(stdout, "catalan(%d) = %d\n", n, catalan);
+    int n = 4;
+    int catalan;
+    
+    catalan = recursive_catalan(n);
+    fprintf(stdout, "catalan(%d) = %d\n", n, catalan);
+    catalan = dynamic_catalan(n);
+    fprintf(stdout, "catalan(%d) = %d\n", n, catalan);
 
-	return 0;
+    return 0;
 }
